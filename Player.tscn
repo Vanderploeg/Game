@@ -1,27 +1,24 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://playerGrey_up2.png" type="Texture" id=1]
-[ext_resource path="res://playerGrey_walk2.png" type="Texture" id=2]
-[ext_resource path="res://playerGrey_up1.png" type="Texture" id=3]
-[ext_resource path="res://playerGrey_walk1.png" type="Texture" id=4]
+[ext_resource path="res://R.png" type="Texture" id=1]
 [ext_resource path="res://Player.gd" type="Script" id=5]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 3 ), ExtResource( 1 ) ],
+"frames": [ ExtResource( 1 ) ],
 "loop": true,
 "name": "up",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 4 ), ExtResource( 2 ) ],
+"frames": [ ExtResource( 1 ) ],
 "loop": true,
 "name": "walk",
 "speed": 5.0
 } ]
 
 [sub_resource type="CapsuleShape2D" id=2]
-radius = 27.0
-height = 14.0
+radius = 3.05678
+height = 3.15985
 
 [node name="Player" type="Area2D"]
 script = ExtResource( 5 )
@@ -30,11 +27,11 @@ __meta__ = {
 }
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-scale = Vector2( 0.5, 0.5 )
+scale = Vector2( 0.1, 0.1 )
 frames = SubResource( 1 )
-animation = "walk"
+animation = "up"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 0.959931
+scale = Vector2( 10, 10 )
 shape = SubResource( 2 )
-
-[connection signal="hit" from="." to="." method="game_over"]

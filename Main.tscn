@@ -1,21 +1,28 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://mob_scene.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Main.gd" type="Script" id=3]
 [ext_resource path="res://HUD.tscn" type="PackedScene" id=4]
+[ext_resource path="res://o.jpg" type="Texture" id=5]
+[ext_resource path="res://explosion.ogv" type="VideoStream" id=6]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, -3, 2, 0, 0, 0, 0, 476, 4, 0, 0, 0, 0, 480, 716, 0, 0, 0, 0, -3, 712, 0, 0, 0, 0, -3, 2 )
+"points": PoolVector2Array( 0, 0, 0, 0, 0, -2, 0, 0, 0, 0, 1223, 1, 0, 0, 0, 0, 1223, 718, 0, 0, 0, 0, 0, 717, 0, 0, 0, 0, -1, 1 )
 }
 
 [node name="Main" type="Node"]
 script = ExtResource( 3 )
 mob_scene = ExtResource( 2 )
 
+[node name="VideoPlayer" type="VideoPlayer" parent="."]
+margin_right = 1223.0
+margin_bottom = 719.0
+stream = ExtResource( 6 )
+
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 242, 445 )
+position = Vector2( 238, 448 )
 
 [node name="MobTimer" type="Timer" parent="."]
 wait_time = 0.5
@@ -27,18 +34,26 @@ wait_time = 2.0
 one_shot = true
 
 [node name="StartPosition" type="Position2D" parent="."]
-position = Vector2( 240, 450 )
+position = Vector2( 612, 450 )
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground"]
+position = Vector2( 575, 451 )
+scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 5 )
+
+[node name="HUD" parent="." instance=ExtResource( 4 )]
 
 [node name="MobPath" type="Path2D" parent="."]
 curve = SubResource( 1 )
 
 [node name="MobSpawnLocation" type="PathFollow2D" parent="MobPath"]
-position = Vector2( -3, 2 )
-rotation = 0.00417533
-
-[node name="HUD" parent="." instance=ExtResource( 4 )]
+position = Vector2( 0, -2 )
+rotation = 0.00245298
 
 [connection signal="body_entered" from="Player" to="Player" method="_on_Player_body_entered"]
+[connection signal="hit" from="Player" to="." method="game_over"]
 [connection signal="timeout" from="MobTimer" to="." method="_on_MobTimer_timeout"]
 [connection signal="timeout" from="ScoreTimer" to="." method="_on_ScoreTimer_timeout"]
 [connection signal="timeout" from="StartTimer" to="." method="_on_StartTimer_timeout"]

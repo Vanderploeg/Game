@@ -38,14 +38,11 @@ func start(pos):
 	show()
 	$CollisionShape2D.disabled = false
 	
-func game_over():
-	$ScoreTimer.stop()
-	$MobTimer.stop()
-	$HUD.show_game_over()
 
 
-
-func _on_Player_body_entered(body):
+func _on_Player_body_entered(_body):
 	hide()
 	emit_signal("hit")
 	$CollisionShape2D.set_deferred("disabled", true)
+	
+	
