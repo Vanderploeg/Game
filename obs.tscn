@@ -1,0 +1,72 @@
+[gd_scene load_steps=7 format=2]
+
+[sub_resource type="CanvasItemMaterial" id=2]
+blend_mode = 1
+light_mode = 1
+
+[sub_resource type="QuadMesh" id=3]
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 37.625, 279.5 )
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 39, 277 )
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 0.15748, 0.176322 )
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 102.5, 69 )
+
+[node name="Node2D" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="StaticBody2D"]
+material = SubResource( 2 )
+position = Vector2( -407.484, -167.063 )
+scale = Vector2( 73.0313, 557.875 )
+mesh = SubResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( -407.625, -167.5 )
+shape = SubResource( 4 )
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+position = Vector2( 33, -15 )
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="StaticBody2D2"]
+material = SubResource( 2 )
+position = Vector2( 355, -161.531 )
+scale = Vector2( 77, 550.937 )
+mesh = SubResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2( 354, -164 )
+shape = SubResource( 5 )
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="."]
+position = Vector2( 23, 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
+position = Vector2( -27.8752, 279 )
+scale = Vector2( 1537.5, 198.5 )
+shape = SubResource( 1 )
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="StaticBody2D3"]
+material = SubResource( 2 )
+position = Vector2( -27, 280 )
+scale = Vector2( 486, 71.4375 )
+mesh = SubResource( 3 )
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="."]
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="StaticBody2D4"]
+material = SubResource( 2 )
+position = Vector2( 6.50001, -39.5 )
+scale = Vector2( 203, 135 )
+mesh = SubResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D4"]
+position = Vector2( 5.5, -40 )
+shape = SubResource( 6 )
